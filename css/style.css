@@ -17,6 +17,7 @@
   --color-dairy: #fcfcfc;
   --header-idx: 10;
   --modal-idx: 100;
+  --animation: 250ms;
 }
 * {
   margin: 0px;
@@ -633,6 +634,11 @@ img {
 .portfolio-item {
   width: calc((100% - 48px) / 3);
 }
+.portfolio-item:hover .overlay,
+.portfolio-item:focus .overlay
+{
+  transform: translateY(0%);
+}
 .portfolio-card {
   padding: 32px 16px;
   border: 1px solid #e7e9fc;
@@ -648,6 +654,7 @@ img {
 }
 .portfolio-thumb {
   position: relative;
+  overflow: hidden;
 }
 .overlay {
   position: absolute;
@@ -657,6 +664,8 @@ img {
   height: 100%;
   background-color: var(--color-iris);
   padding: 40px 32px;
+  transform: translateY(100%);
+  transition: transform var(--animation);
 }
 .overlay-text {
   color: var(--color-cloud);
