@@ -52,10 +52,7 @@ img {
 }
 .link {
   text-decoration: none;
-  transition: background-color, color;
-  transition-property: background-color, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .address-link {
   text-decoration: none;
@@ -86,7 +83,7 @@ img {
   border-bottom: 1px solid #e7e9fc;
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
-    z-index: var(--header-idx);
+  z-index: var(--header-idx);
 }
 .header-nav {
   display: inline-flex;
@@ -122,17 +119,18 @@ img {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: var(--color-navy-blue);
+  color: var(--color-ocean);
   position: relative;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-nav-link::after {
   content: "";
   position: absolute;
-  bottom: -25px;
+  bottom: -px;
   display: block;
   width: 100%;
   height: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 .header-nav-link.active::after {
   background-color: var(--color-ocean);
@@ -152,7 +150,7 @@ img {
 .contact-list:hover,
 .contact-list:focus {
   color: var(--color-ocean);
-  transition: 250ms;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-mail {
   font-weight: 400;
@@ -214,10 +212,7 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  transition: background-color, color;
-  transition-property: background-color, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button-text {
   text-transform: capitalize;
@@ -438,9 +433,9 @@ img {
   justify-content: center;
   fill: var(--color-light-slate);
   color: var(--color-light-slate);
-  transition-property: border, fill, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customers-item-link:hover,
 .customers-item-link:focus {
@@ -551,22 +546,26 @@ img {
   align-items: center;
   justify-content: center;
   z-index: var(--modal-idx);
-  
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.is-hidden{
+.is-hidden {
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
 }
 .modal {
   position: absolute;
-  top: calc(50%-250px);
-  left: calc(50%-225px);
+  top: 50%;
+  left: 50%;
   width: 408px;
-  height: 576px;
+  min-height: 576px;
   background-color: var(--color-dairy);
   border-radius: 4px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-close-btn {
   position: absolute;
@@ -581,9 +580,24 @@ img {
   align-items: center;
   justify-content: center;
   padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  fill: var(--color-navy-blue);
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus{
+  background-color: #404bbf;
+  border: none;
+  fill:var(--color-white);
 }
 .modal-close-icon {
-  fill: var(--color-navy-blue);
+  
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-close-icon:hover,
+.modal-close-icon:focus{
+  fill: var(--color-white);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /**
   |============================
@@ -634,8 +648,7 @@ img {
   width: calc((100% - 48px) / 3);
 }
 .portfolio-item:hover .overlay,
-.portfolio-item:focus .overlay
-{
+.portfolio-item:focus .overlay {
   transform: translateY(0%);
 }
 .portfolio-card {
